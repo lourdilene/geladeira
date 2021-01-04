@@ -1,13 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    ItemController
+};
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/products', [ProductController::class, 'index'] );
-
+Route::get('/items', [ItemController::class, 'index'] );
 
 Route::get('/products', function () {
     $data = [
