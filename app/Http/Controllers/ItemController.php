@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Utils\Date;
 
 class ItemController extends Controller
 {
@@ -41,9 +40,6 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $item = new Item();
-
-        // var_dump(Date::dateBRToUS($request->shelf_life));
-        // die();
 
         $item->name = $request->name;
         $item->shelf_life = $request->shelf_life;

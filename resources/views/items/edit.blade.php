@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Geladeira</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
 
 				<input type="text" name="name" placeholder="Nome" value="{{ $item->name }}">
 
-				<input type="text" name="shelf_life" placeholder="Validade" value="{{ date('d/m/Y', strtotime($item->shelf_life)) }}">
+				<input type="date" name="shelf_life" placeholder="Validade" value="{{ date('Y-m-d', strtotime($item->shelf_life)) }}">
 
 				<input type="text" name="quantity" placeholder="Quantidade" value="{{ $item->quantity }}">
 

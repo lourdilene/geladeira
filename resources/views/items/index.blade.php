@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Geladeira</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -14,9 +14,15 @@
                 font-family: 'Nunito';
             }
 
+            .flex {
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+            }
+
             table th,
             table td {
-                padding: 0 10px;
+                padding: 4px 10px;
                 border: solid 1px black;
             }
 
@@ -27,6 +33,40 @@
                 text-decoration: none;
                 border: 0;
                 cursor: pointer;
+                width: fit-content;
+            }
+
+            .mini-button {
+                padding: 4px;
+                background-color: #DDD;
+                border-radius: 8px;
+                text-decoration: none;
+                border: 0;
+                cursor: pointer;
+                color: #000;
+                font-size: 12px;
+            }
+
+            .red {
+                background-color: #f44336;
+                color: #fff;
+            }
+            .blue {
+                background-color: #2196f3;
+                color: #fff;
+            }
+
+            .button-group {
+                display: flex;
+            }
+
+            .button-group > * {
+                margin: 0 4px;
+                transition: 300ms;
+            }
+
+            .button-group > *:hover {
+                opacity: 0.8;
             }
         </style>
     </head>
@@ -54,13 +94,13 @@
                             <td>{{ $item->quantity }}</td>
                             <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                             <td>{{ date('d/m/Y', strtotime($item->shelf_life)) }}</td>
-                            <td>
-                                <a href="/items/{{ $item->id }}/edit">Editar</a>
+                            <td class="button-group">
+                                <a href="/items/{{ $item->id }}/edit" class="mini-button blue">Editar</a>
 
                                 <form action="/items/{{ $item->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit">Excluir</button>
+                                    <button type="submit" class="mini-button red">Excluir</button>
                                 </form>
                             </td>
                         </tr>
