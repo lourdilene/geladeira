@@ -16,7 +16,7 @@ class ItemController extends Controller
     {
         $itens = Item::get();
 
-        return view('items/listagem', [
+        return view('items/index', [
             'itens' => $itens
         ]);
     }
@@ -61,7 +61,9 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('items/edit', [
+            'id' => $id
+        ]);
     }
 
     /**
