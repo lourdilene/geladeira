@@ -45,19 +45,18 @@
 
 			<a href="/items" class="button">Voltar</a>
 
-			<form action="/items/{{ $item->id }}" method="POST">
+			<form action="/items" method="POST">
 				@csrf
-				@method('PUT')
 
 				<h1>Cadastro de itens</h1>
 
-				<input type="text" name="name" placeholder="Nome" value="{{ $item->name }}">
+				<input type="text" name="name" placeholder="Nome">
 
-				<input type="text" name="shelf_life" placeholder="Validade" value="{{ date('d/m/Y', strtotime($item->shelf_life)) }}">
+				<input type="text" name="shelf_life" placeholder="Validade">
 
-				<input type="text" name="quantity" placeholder="Quantidade" value="{{ $item->quantity }}">
+				<input type="text" name="quantity" placeholder="Quantidade">
 
-				<input type="submit" value="Salvar altarações" class="button">
+				<input type="submit" value="Cadastrar" class="button">
 			</form>
 
 		</div>

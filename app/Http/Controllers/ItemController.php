@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Utils\Date;
 
 class ItemController extends Controller
 {
@@ -28,7 +29,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items/create');
     }
 
     /**
@@ -39,7 +40,18 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item();
+
+        // var_dump(Date::dateBRToUS($request->shelf_life));
+        // die();
+
+        $item->name = $request->name;
+        $item->shelf_life = $request->shelf_life;
+        $item->quantity = $request->quantity;
+
+        $item->save();
+        
+        return redirect('/items/create');
     }
 
     /**
@@ -61,8 +73,10 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
+        $item = Item::findOrFail($id);
+
         return view('items/edit', [
-            'id' => $id
+            'item' => $item
         ]);
     }
 
@@ -75,7 +89,9 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Item::findOrFail($id)->update($request->all());
+        
+        return redirect('/items');
     }
 
     /**
@@ -86,6 +102,8 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Item::findOrFail($id)->delete();
+
+        return redirect('/items');
     }
 }
