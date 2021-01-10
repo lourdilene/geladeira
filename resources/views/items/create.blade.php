@@ -1,64 +1,25 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.default')
 
-        <title>Geladeira</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
-        <style>
-            body {
-                font-family: 'Nunito';
-            }
+	<a href="/items" class="button">Voltar</a>
 
-            h1 {
-				font-size: 20px;
-				font-family: sans-serif;
-			}
+	<form action="/items" method="POST">
+		@csrf
 
-			.button {
-                padding: 10px;
-                background-color: #DDD;
-                border-radius: 8px;
-				text-decoration: none;
-				border: 0;
-				cursor: pointer;
-            }
+		<h1>Cadastro de itens</h1>
 
-			form {
-				display: flex;
-				flex-direction: column;
-				width: 300px;
-				margin: 0 auto;
-			}
+		<input type="text" name="name" placeholder="Nome">
 
-			form input {
-				margin-bottom: 10px;
-			}
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+		<input type="date" name="shelf_life" placeholder="Validade">
 
-			<a href="/items" class="button">Voltar</a>
+		<input type="text" name="quantity" placeholder="Quantidade">
 
-			<form action="/items" method="POST">
-				@csrf
+		<input type="submit" value="Cadastrar" class="button">
+	</form>
 
-				<h1>Cadastro de itens</h1>
+</div>
 
-				<input type="text" name="name" placeholder="Nome">
-
-				<input type="date" name="shelf_life" placeholder="Validade">
-
-				<input type="text" name="quantity" placeholder="Quantidade">
-
-				<input type="submit" value="Cadastrar" class="button">
-			</form>
-
-		</div>
-    </body>
-</html>
+@endsection
